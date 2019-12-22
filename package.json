@@ -11,7 +11,7 @@
     "email": "rhysbalevicius@gmail.com",
     "url": "https://github.com/r-ba"
   },
-  "license": "ISC",
+  "license": "MIT",
   "main": "index.js",
   "gypfile": true,
   "scripts": {
