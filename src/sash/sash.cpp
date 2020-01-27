@@ -17,8 +17,7 @@ void Sash::update(std::string strChunk) {
   this->load(strChunk);
 }
 
-// helper fn: counts the bits of an integer
-int count_bits(int n) {
+int hamming_weight(int n) {
   int count = 0;
   for (; n != 0;) {
     if ((n & 1) == 1) count++;
@@ -43,7 +42,7 @@ void Sash::load(std::string chunk) {
   int prev_byte = 0, byte = 0;
   for (std::string::iterator chr=chunk.begin(); chr!=chunk.end(); ++chr) {
     byte = *chr;
-    n += count_bits(byte);
+    n += hamming_weight(byte);
     prev_byte = (prev_byte + byte) % 256;
     this->buffer_[i] = prev_byte;
     i = (i+1) % 32;
@@ -63,7 +62,7 @@ std::string Sash::digest() {
 
 // convert byte to it's corresponding hex representation
 std::string Sash::hexify(uint8_t byte) {
-  std::string alpha = "0123456789ABCDEF";
+  std::string alpha = "0123456789abcdef";
   std::string hex;
   for (int i=0; i<16; i++) {
     if (byte >= 16) {

@@ -6,12 +6,12 @@ describe('create()', function(){
 
   it('Empty initialization: create()', function() {
     const s = sash.create();
-    expect(s.digest()).to.equal("0x75CC611BB69638C08FC7DFE3044C9ADAAFB943CB1E2EE4ACFDBDB5B1406862B2");
+    expect(s.digest()).to.equal("0x75cc611bb69638c08fc7dfe3044c9adaafb943cb1e2ee4acfdbdb5b1406862b2");
   });
 
   it('String "hello world!": create()', function() {
     const s = sash.create("hello world!");
-    expect(s.digest()).to.equal("0x68E51C247FACDFC71E1AC8A5D5AC0276A4C1F86E6530BB57BEBC5CF527506858");
+    expect(s.digest()).to.equal("0x68e51c247facdfc71e1ac8a5d5ac0276a4c1f86e6530bb57bebc5cf527506858");
   });
 
   it('File "binding.gyp": create()', function() {
@@ -21,7 +21,7 @@ describe('create()', function(){
       fileContent += chunk;
     }).on('end', () => {
       s.update(fileContent);
-      expect(s.digest()).to.equal("0x87C01EFC2C70482D632EC32011719A66B6FE4A2122D610D819F884BD2FADEAB0");
+      expect(s.digest()).to.equal("0x87c01efc2c70482d632ec32011719a66b6fe4a2122d610d819f884bd2fadeab0");
     });
   });
 
@@ -32,13 +32,13 @@ describe('update()', function(){
   it('Empty initialization: update()', function() {
     const s = sash.create();
     s.update("");
-    expect(s.digest()).to.equal("0x75CC611BB69638C08FC7DFE3044C9ADAAFB943CB1E2EE4ACFDBDB5B1406862B2");
+    expect(s.digest()).to.equal("0x75cc611bb69638c08fc7dfe3044c9adaafb943cb1e2ee4acfdbdb5b1406862b2");
   });
 
   it('String "hello world!": update()', function() {
     const s = sash.create();
     s.update("hello world!");
-    expect(s.digest()).to.equal("0x68E51C247FACDFC71E1AC8A5D9B43056F9BB62B64CE8FDEF19986821AC383418");
+    expect(s.digest()).to.equal("0x68e51c247facdfc71e1ac8a5d9b43056f9bb62b64ce8fdef19986821ac383418");
   });
 
   it('File "binding.gyp": update()', function() {
@@ -46,7 +46,7 @@ describe('update()', function(){
     fs.createReadStream("binding.gyp", { encoding: 'utf8' }).on('data', chunk => {
       s.update(chunk);
     }).on('end', () => {
-      expect(s.digest()).to.equal("0x3ECDAA34ECD2F4213FD587FC671EE6C832CEF9A430CB9C6B3344B3178D5BFD62");
+      expect(s.digest()).to.equal("0x3ecdaa34ecd2f4213fd587fc671ee6c832cef9a430cb9c6b3344b3178d5bfd62");
     });
   });
 
